@@ -12,7 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install zip tool
-        uses: montudor/action-zip@v1
+        uses: montudor/action-zip@v1.
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4   # or @main / latest tag
+        with:
+          aws-region: eu-north-1
+      
       - name: Create Zip file for Lambda Function
         run: cd src && zip -r code.zip .
       - name: AWS CLI v2
